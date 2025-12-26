@@ -215,4 +215,86 @@ textarea{resize:vertical}
     border-radius:16px;
     width:min(260px, calc(100vw - 40px));
   }
+/* Premium small UI elements */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(201,165,106,0.35);
+  background:rgba(201,165,106,0.10);
+  color:rgba(255,255,255,0.84);
+  font-weight:700;
+  font-size:12px;
 }
+
+.snap-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.snap-row{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.snap-row:last-of-type{border-bottom:none;}
+.snap-label{color:rgba(255,255,255,0.62); font-weight:600; font-size:13px;}
+.snap-value{color:rgba(255,255,255,0.88); font-weight:700; font-size:13px; text-align:right}
+
+/* Grids for services and work */
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:16px;
+}
+.service-card{
+  padding:18px;
+}
+.service-title{
+  font-weight:800;
+  font-size:16px;
+  margin-bottom:8px;
+  color:rgba(255,255,255,0.92);
+}
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:16px;
+}
+.work-card{
+  padding:18px;
+}
+.work-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.work-badge{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(0,0,0,0.18);
+  color:rgba(255,255,255,0.82);
+  font-weight:700;
+  font-size:12px;
+}
+.work-title{
+  margin:0 0 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .service-grid{grid-template-columns:1fr;}
+  .work-grid{grid-template-columns:1fr;}
+  .snap-value{text-align:left;}
+}
+
