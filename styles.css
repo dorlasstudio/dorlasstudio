@@ -239,3 +239,20 @@ a:visited { color: inherit; }
 
   .label{ min-width: 0; }
 }
+/* Better cross-browser viewport height consistency */
+.hero{
+  min-height: 100vh;
+  min-height: 100svh; /* small viewport height (mobile-safe) */
+  min-height: 100dvh; /* dynamic viewport height (new browsers) */
+}
+
+/* If blur is blocked, still looks premium */
+.hero-content{
+  background: rgba(0,0,0,0.62);
+}
+@supports (backdrop-filter: blur(12px)) {
+  .hero-content{
+    background: rgba(0,0,0,0.52);
+    backdrop-filter: blur(12px);
+  }
+}
