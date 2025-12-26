@@ -1,69 +1,220 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
   height: 100%;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   background-color: #0e0e0e;
   color: #eaeaea;
 }
 
+/* Smooth scroll for anchor links (#contact) */
+html { scroll-behavior: smooth; }
+
+/* Top bar */
+.topbar{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand{
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, rgba(201,165,106,1), rgba(255,255,255,0.85));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 24px rgba(201,165,106,0.18);
+}
+
+.contact-btn{
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(201,165,106,0.35);
+  background: rgba(201,165,106,0.12);
+  color: rgba(255,255,255,0.92);
+  font-weight: 700;
+  font-size: 14px;
+}
+
 /* HERO / WALLPAPER */
-.hero {
+.hero{
   min-height: 100vh;
   width: 100%;
+  padding: 90px 22px 60px; /* top padding accounts for fixed topbar */
   background-image: url("assets/wallpaper.png");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: contain; /* THIS IS THE KEY: shows full image */
+  background-size: contain; /* FULL image visible */
   display: flex;
   align-items: flex-end;
-  padding: 4rem 2rem;
+  justify-content: flex-start; /* left aligned */
 }
 
-/* CONTENT OVER IMAGE */
-.hero-content {
-  max-width: 720px;
+/* Narrow + left content box so center stays visible */
+.hero-content{
+  width: 100%;
+  max-width: 460px;          /* tighter box */
+  margin-left: 0;            /* keep left */
   background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(8px);
-  padding: 2.5rem;
+  backdrop-filter: blur(10px);
   border-radius: 16px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,0.10);
 }
 
-/* TITLE */
-.hero-content h1 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+.hero-content h1{
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
-/* BIO */
-.hero-content p {
-  font-size: 1.05rem;
+.hero-content p{
+  font-size: 1.02rem;
   line-height: 1.7;
-  color: #d0d0d0;
-  margin-bottom: 1.5rem;
+  color: rgba(255,255,255,0.82);
 }
 
-/* CONTACT */
-.contact {
-  margin-top: 1rem;
-  font-size: 0.95rem;
+/* Buttons under bio */
+.cta-row{
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
 }
 
-.contact a {
-  color: #d4af37;
+.primary-btn, .secondary-btn{
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 14px;
 }
 
-.contact a:hover {
-  text-decoration: underline;
+.primary-btn{
+  border: 1px solid rgba(201,165,106,0.35);
+  background: rgba(201,165,106,0.18);
+  color: rgba(255,255,255,0.92);
 }
 
-/* SCROLL SPACE so image isn't cut on small screens */
-.spacer {
-  height: 60vh;
+.secondary-btn{
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.18);
+  color: rgba(255,255,255,0.80);
+}
+
+/* CONTACT SECTION */
+.contact-section{
+  padding: 70px 22px;
+  background: #0b0f14;
+}
+
+.contact-card{
+  max-width: 640px;
+  border-radius: 16px;
+  padding: 22px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.contact-card h2{
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+.contact-line{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-line:first-of-type{ border-top: none; }
+
+.label{
+  color: rgba(255,255,255,0.65);
+  font-weight: 700;
+  font-size: 13px;
+  min-width: 90px;
+}
+
+.contact-line a{
+  color: rgba(201,165,106,1);
+  text-decoration: none;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.contact-line a:hover{ text-decoration: underline; }
+
+/* ===== Mobile optimizations ===== */
+@media (max-width: 720px){
+
+  .topbar{
+    padding: 12px 14px;
+  }
+
+  .contact-btn{
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+
+  .hero{
+    padding: 82px 14px 40px;
+    align-items: flex-end;
+    background-position: center top;
+    background-size: contain;
+  }
+
+  .hero-content{
+    max-width: 100%; /* on phone use full width */
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .hero-content h1{
+    font-size: 2.0rem;
+  }
+
+  .hero-content p{
+    font-size: 0.98rem;
+  }
+
+  .cta-row{
+    flex-direction: column;
+  }
+
+  .primary-btn, .secondary-btn{
+    width: 100%;
+  }
+
+  .contact-card{
+    max-width: 100%;
+    padding: 18px;
+  }
+
+  .contact-line{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .label{
+    min-width: 0;
+  }
 }
