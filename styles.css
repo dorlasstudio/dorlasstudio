@@ -1,12 +1,12 @@
 /* ===== Reset ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Smooth scroll for #contact */
+/* Smooth scroll */
 html { scroll-behavior: smooth; }
 
-body {
+body{
   min-height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: #0e0e0e;
   color: #eaeaea;
 }
@@ -15,7 +15,7 @@ body {
 a { color: inherit; }
 a:visited { color: inherit; }
 
-/* ===== Topbar ===== */
+/* ===== Header ===== */
 .topbar{
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -76,15 +76,22 @@ a:visited { color: inherit; }
   justify-content: flex-start;
 }
 
-/* Bio box: tighter + vertical + left */
+/* Bio card: tighter + vertical + left */
 .hero-content{
   width: 100%;
-  max-width: 320px;   /* tight */
+  max-width: 320px;
   padding: 18px 16px 16px;
   border-radius: 16px;
-  background: rgba(0,0,0,0.52);
-  backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.62); /* fallback (Mullvad may block blur) */
+}
+
+/* If blur is supported, use it */
+@supports (backdrop-filter: blur(12px)) {
+  .hero-content{
+    background: rgba(0,0,0,0.52);
+    backdrop-filter: blur(12px);
+  }
 }
 
 .kicker{
@@ -107,7 +114,7 @@ a:visited { color: inherit; }
   font-size: 0.95rem;
   line-height: 1.62;
   color: rgba(255,255,255,0.78);
-  max-width: 28ch; /* forces vertical column */
+  max-width: 28ch;
 }
 
 /* Button */
@@ -187,7 +194,7 @@ a:visited { color: inherit; }
   min-width: 90px;
 }
 
-/* gold links (no blue) */
+/* Gold links (no blue) */
 .link{
   color: rgba(201,165,106,1);
   text-decoration: none;
@@ -197,38 +204,82 @@ a:visited { color: inherit; }
 
 .link:hover { text-decoration: underline; }
 
-/* ===== Mobile ===== */
+/* ===== Cross-browser viewport consistency ===== */
+.hero{
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+
+/* ===== Mobile optimization ===== */
 @media (max-width: 720px){
-  .topbar{ padding: 12px 14px; }
+
+  .topbar{
+    padding: 10px 12px;
+  }
+
+  .logo{
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
 
   .nav-link{
-    padding: 9px 10px;
+    padding: 8px 10px;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
   }
 
   .hero{
-    padding: 82px 14px 40px;
+    padding: 74px 12px 22px;
+    align-items: flex-end;
     background-position: center top;
     background-size: contain;
   }
 
   .hero-content{
     max-width: 100%;
-    padding: 16px;
+    padding: 14px 14px 12px;
     border-radius: 14px;
   }
 
-  .hero-content h1{ font-size: 1.85rem; }
+  .kicker{
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .hero-content h1{
+    font-size: 1.65rem;
+    margin-bottom: 8px;
+  }
 
   .bio{
+    font-size: 0.94rem;
+    line-height: 1.58;
     max-width: 100%;
-    font-size: 0.95rem;
+  }
+
+  .actions{
+    margin-top: 12px;
+  }
+
+  .btn{
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  .contact-section{
+    padding: 46px 12px;
   }
 
   .contact-card{
     max-width: 100%;
-    padding: 18px;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .contact-card h2{
+    font-size: 1.22rem;
   }
 
   .contact-line{
@@ -237,22 +288,7 @@ a:visited { color: inherit; }
     gap: 6px;
   }
 
-  .label{ min-width: 0; }
-}
-/* Better cross-browser viewport height consistency */
-.hero{
-  min-height: 100vh;
-  min-height: 100svh; /* small viewport height (mobile-safe) */
-  min-height: 100dvh; /* dynamic viewport height (new browsers) */
-}
-
-/* If blur is blocked, still looks premium */
-.hero-content{
-  background: rgba(0,0,0,0.62);
-}
-@supports (backdrop-filter: blur(12px)) {
-  .hero-content{
-    background: rgba(0,0,0,0.52);
-    backdrop-filter: blur(12px);
+  .label{
+    min-width: 0;
   }
 }
