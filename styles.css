@@ -16,14 +16,17 @@ a { color: inherit; }
 a:visited { color: inherit; }
 
 /* ===== Header ===== */
+:root{ --headerH: 64px; }
+
 .topbar{
+  height: var(--headerH);
+  padding: 0 22px;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 22px;
   background: rgba(10,10,10,0.40);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -65,12 +68,13 @@ a:visited { color: inherit; }
 /* ===== Hero / Wallpaper (FULL image visible) ===== */
 .hero{
   min-height: 100vh;
-  width: 100%;
-  padding: 92px 22px 54px; /* space for fixed header */
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding: calc(var(--headerH) + 28px) 22px 54px;
   background-image: url("assets/wallpaper.png");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: contain; /* FULL wallpaper visible */
+  background-size: contain;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -213,6 +217,10 @@ a:visited { color: inherit; }
 
 /* ===== Mobile optimization ===== */
 @media (max-width: 720px){
+  :root{ --headerH: 56px; }
+  .topbar{ padding: 0 12px; }
+  .hero{ padding: calc(var(--headerH) + 18px) 12px 22px; }
+}
 
   .topbar{
     padding: 10px 12px;
