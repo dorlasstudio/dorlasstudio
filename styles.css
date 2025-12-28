@@ -4,20 +4,25 @@
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
 
+:root{
+  --headerH: 64px;
+  --gold: rgba(201,165,106,1);
+  --text: rgba(255,255,255,0.84);
+  --bg: #0e0e0e;
+}
+
 body{
   min-height: 100%;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0e0e0e;
-  color: #eaeaea;
+  background: var(--bg);
+  color: rgba(234,234,234,1);
 }
 
-/* Kill default blue links everywhere */
-a { color: inherit; }
-a:visited { color: inherit; }
+/* Kill default blue links globally */
+a{ color: inherit; }
+a:visited{ color: inherit; }
 
 /* ===== Header ===== */
-:root{ --headerH: 64px; }
-
 .topbar{
   height: var(--headerH);
   padding: 0 22px;
@@ -44,7 +49,7 @@ a:visited { color: inherit; }
   text-shadow: 0 0 24px rgba(201,165,106,0.16);
 }
 
-.nav { display: flex; gap: 12px; }
+.nav{ display: flex; gap: 12px; }
 
 .nav-link{
   text-decoration: none;
@@ -70,11 +75,14 @@ a:visited { color: inherit; }
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
+
   padding: calc(var(--headerH) + 28px) 22px 54px;
+
   background-image: url("assets/wallpaper.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: contain;
+
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
@@ -87,7 +95,7 @@ a:visited { color: inherit; }
   padding: 18px 16px 16px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.62); /* fallback (Mullvad may block blur) */
+  background: rgba(0,0,0,0.62); /* fallback if blur blocked */
 }
 
 /* If blur is supported, use it */
@@ -113,7 +121,6 @@ a:visited { color: inherit; }
   margin-bottom: 10px;
 }
 
-/* tighter + more vertical */
 .bio{
   font-size: 0.95rem;
   line-height: 1.62;
@@ -121,8 +128,7 @@ a:visited { color: inherit; }
   max-width: 28ch;
 }
 
-/* Button */
-.actions { margin-top: 14px; }
+.actions{ margin-top: 14px; }
 
 .btn{
   display: inline-flex;
@@ -187,7 +193,7 @@ a:visited { color: inherit; }
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.contact-line:first-of-type { border-top: none; }
+.contact-line:first-of-type{ border-top: none; }
 
 .label{
   color: rgba(255,255,255,0.62);
@@ -198,38 +204,22 @@ a:visited { color: inherit; }
   min-width: 90px;
 }
 
-/* Gold links (no blue) */
+/* Gold links (no blue even after visit) */
 .link{
-  color: rgba(201,165,106,1);
+  color: var(--gold);
   text-decoration: none;
   font-weight: 900;
   word-break: break-word;
 }
-
-.link:hover { text-decoration: underline; }
-
-/* ===== Cross-browser viewport consistency ===== */
-.hero{
-  min-height: 100vh;
-  min-height: 100svh;
-  min-height: 100dvh;
-}
+.link:visited{ color: var(--gold); }
+.link:hover{ text-decoration: underline; }
 
 /* ===== Mobile optimization ===== */
 @media (max-width: 720px){
   :root{ --headerH: 56px; }
+
   .topbar{ padding: 0 12px; }
-  .hero{ padding: calc(var(--headerH) + 18px) 12px 22px; }
-}
-
-  .topbar{
-    padding: 10px 12px;
-  }
-
-  .logo{
-    font-size: 13px;
-    letter-spacing: 0.12em;
-  }
+  .logo{ font-size: 13px; letter-spacing: 0.12em; }
 
   .nav-link{
     padding: 8px 10px;
@@ -239,7 +229,7 @@ a:visited { color: inherit; }
   }
 
   .hero{
-    padding: 74px 12px 22px;
+    padding: calc(var(--headerH) + 18px) 12px 22px;
     align-items: flex-end;
     background-position: center top;
     background-size: contain;
@@ -251,10 +241,7 @@ a:visited { color: inherit; }
     border-radius: 14px;
   }
 
-  .kicker{
-    font-size: 11px;
-    margin-bottom: 6px;
-  }
+  .kicker{ font-size: 11px; margin-bottom: 6px; }
 
   .hero-content h1{
     font-size: 1.65rem;
@@ -267,18 +254,14 @@ a:visited { color: inherit; }
     max-width: 100%;
   }
 
-  .actions{
-    margin-top: 12px;
-  }
+  .actions{ margin-top: 12px; }
 
   .btn{
     width: 100%;
     padding: 12px 14px;
   }
 
-  .contact-section{
-    padding: 46px 12px;
-  }
+  .contact-section{ padding: 46px 12px; }
 
   .contact-card{
     max-width: 100%;
@@ -286,9 +269,7 @@ a:visited { color: inherit; }
     border-radius: 14px;
   }
 
-  .contact-card h2{
-    font-size: 1.22rem;
-  }
+  .contact-card h2{ font-size: 1.22rem; }
 
   .contact-line{
     flex-direction: column;
@@ -296,7 +277,5 @@ a:visited { color: inherit; }
     gap: 6px;
   }
 
-  .label{
-    min-width: 0;
-  }
+  .label{ min-width: 0; }
 }
