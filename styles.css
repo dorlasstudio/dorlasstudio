@@ -116,6 +116,15 @@ body{
 
 /* ===== Contact section ===== */
 .contact-section{
+  .section-kicker{
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(201,165,106,0.90);
+  margin-bottom:8px;
+  font-weight:800;
+}
+
   padding:70px 22px;
   background:#0b0f14;
   border-top:1px solid rgba(255,255,255,0.06);
