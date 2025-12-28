@@ -1,5 +1,28 @@
+// Keep your existing namespace (safe even if you don't use it yet)
+window.DS = window.DS || {};
+window.DS.fakeSubmit = (e) => {
+  e.preventDefault();
+  const note = document.getElementById('form-note');
+  if (note) note.textContent = "Saved locally (demo). Later connect a real form backend.";
+  return false;
+};
+
 (() => {
-  // Smooth scroll with fixed-header offset
+  // 1) Year (only if you have <span id="year"></span> somewhere)
+  const y = document.getElementById('year');
+  if (y) y.textContent = String(new Date().getFullYear());
+
+  // 2) Mobile nav toggle (only if you have a .nav-toggle button)
+  const btn = document.querySelector('.nav-toggle');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const open = document.body.classList.toggle('nav-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  // 3) Smooth scroll for #anchors + fixed-header offset
+  // Note: scrollIntoView has no offset option, so we adjust after scrolling. :contentReference[oaicite:1]{index=1}
   const header = document.querySelector('.topbar');
 
   function headerOffset() {
@@ -20,7 +43,6 @@
     e.preventDefault();
 
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // apply offset after the browser scrolls
     setTimeout(() => window.scrollBy(0, -headerOffset()), 0);
   });
 })();
