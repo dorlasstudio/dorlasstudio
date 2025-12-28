@@ -18,6 +18,8 @@ a:visited { color: inherit; }
 /* ===== Header ===== */
 :root{ --headerH: 64px; }
 
+#contact { scroll-margin-top: calc(var(--headerH) + 16px); }
+#top     { scroll-margin-top: calc(var(--headerH) + 16px); }
 .topbar{
   height: var(--headerH);
   padding: 0 22px;
