@@ -3,7 +3,7 @@
 
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
-
+html { scroll-padding-top: calc(var(--headerH) + 16px); }
 body{
   min-height: 100%;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
